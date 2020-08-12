@@ -4,7 +4,7 @@ module "tags_network" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "lh"
+  name        = "manar"
   delimiter   = "_"
 
   tags = {
@@ -17,7 +17,7 @@ module "tags_bastion" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "lh-bastion"
+  name        = "manar-bastion"
   delimiter   = "_"
 
   tags = {
@@ -30,7 +30,7 @@ module "tags_webserver" {
   source      = "git::https://github.com/cloudposse/terraform-null-label.git"
   namespace   = var.name
   environment = "dev"
-  name        = "lh-webserve"
+  name        = "manar-webserve"
   delimiter   = "_"
 
   tags = {
@@ -55,8 +55,8 @@ resource "aws_vpc" "lab" {
   enable_dns_hostnames = true
 }
 
-resource "aws_route53_zone" "lh" {
-  name = "lh"
+resource "aws_route53_zone" "manar" {
+  name = "manar"
   tags = module.tags_network.tags
 
   vpc {
@@ -155,7 +155,7 @@ resource "aws_key_pair" "lab_keypair" {
 }
 
 resource "aws_route53_record" "webserver" {
-  zone_id = aws_route53_zone.lh.id
+  zone_id = aws_route53_zone.manar.id
   name    = "webserver"
   type    = "A"
   ttl     = 300
