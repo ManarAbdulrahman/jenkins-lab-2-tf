@@ -48,5 +48,5 @@ connect:
 init:
 	rm -rf .terraform ssh
 	mkdir ssh
-	time terraform init -backend-config="$$TF_NAMESPACE" -backend-config="key=$$TF_NAMESPACE/labs/terraform.tfstate" -backend-config="dynamodb_table=manars-locks"
+	time terraform init -backend-config="bucket=$$TF_NAMESPACE" -backend-config="key=$$TF_NAMESPACE/labs/terraform.tfstate" -backend-config="dynamodb_table=manars-locks"
 	ssh-keygen -t rsa -f ./ssh/id_rsa -q -N ""
