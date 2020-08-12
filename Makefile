@@ -4,7 +4,7 @@ run: stop start exec
 up: fmt plan apply
 
 start:
-	docker container run -it -d \
+	docker container run -it  \
 		   --env TF_NAMESPACE=$$TF_NAMESPACE \
 		   --env AWS_PROFILE="kh-labs" \
 		   --env TF_PLUGIN_CACHE_DIR="/plugin-cache" \
