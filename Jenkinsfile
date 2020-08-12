@@ -17,7 +17,6 @@ pipeline {
         stage ('build') {
             steps {
                 sh "make init"
-                sh "make run"
                 sh "make plan"
             }
         }
