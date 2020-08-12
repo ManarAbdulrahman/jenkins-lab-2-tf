@@ -4,7 +4,7 @@ run: stop start exec
 up: fmt plan apply
 
 start:
-	docker container run -it  \
+	docker container run -it -d \
 		   --env TF_NAMESPACE=$$TF_NAMESPACE \
 		   --env AWS_PROFILE="kh-labs" \
 		   --env TF_PLUGIN_CACHE_DIR="/plugin-cache" \
@@ -15,7 +15,7 @@ start:
 		   --hostname "$$(basename $$PWD)" \
 		   --name "$$(basename $$PWD)" \
 		   -w /$$(basename $$PWD) \
-		   bryandollery/terraform-packer-aws-alpine bash
+		   bryandollery/terraform-packer-aws-alpine 
 
 exec:
 	docker exec -it "$$(basename $$PWD)" bash || true
