@@ -1,5 +1,4 @@
 pipeline {
-
     agent {
         docker {
             image "bryandollery/terraform-packer-aws-alpine"
@@ -15,7 +14,6 @@ pipeline {
                 AWS_PROFILE="kh-labs"
             }
     stages {
- 
         stage ('build') {
          
             steps {
@@ -24,12 +22,9 @@ pipeline {
                 sh "make plan"
             }
         }
-       
         stage ('release') {
             steps {
-                sh "make apply"
-                
-              
+                sh "make apply"     
             }
         }
     }
