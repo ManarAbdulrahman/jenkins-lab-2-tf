@@ -45,7 +45,7 @@ data "aws_ami" "latest_webserver" {
 
   filter {
     name   = "name"
-    values = "MANAR-web-server*"
+    values = "manar-web-server*"
   }
 }
 
